@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  service-customer:
+    container_name: service-customer
+    image: quarkus/service-customer-jvm
+    ports:
+      - "7000:8080"
+    links:
+      - mymongodb
+    depends_on:
+      - mymongodb
+
+  mymongodb:
+    container_name: mymongodb
+    image: mongo
+    ports:
+      - "27017:27017"
